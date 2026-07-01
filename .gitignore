@@ -1,0 +1,14 @@
+# Environnement Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Fichiers temporaires de conversion
+uploads/
+output/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
