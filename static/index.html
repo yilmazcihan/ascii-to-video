@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,7 +91,6 @@
   .panel-left-scroll::-webkit-scrollbar { width: 4px; }
   .panel-left-scroll::-webkit-scrollbar-thumb { background: var(--border); }
 
-  /* Group blocks */
   .group { margin-bottom: 20px; }
   .group-label {
     font-size: 9px;
@@ -155,7 +154,6 @@
     letter-spacing: 0.02em;
   }
 
-  /* Inline row: label + control */
   .inline-row {
     display: flex;
     align-items: center;
@@ -208,7 +206,6 @@
   }
   input[type="text"]:focus { border-bottom-color: var(--text); }
 
-  /* Range */
   .range-row {
     display: flex;
     align-items: center;
@@ -243,7 +240,6 @@
     flex-shrink: 0;
   }
 
-  /* Select */
   select {
     background: transparent;
     border: none;
@@ -262,7 +258,6 @@
     max-width: 100%;
   }
 
-  /* Toggle */
   .toggle-row {
     display: flex;
     align-items: center;
@@ -305,7 +300,6 @@
     color: var(--muted);
   }
 
-  /* Themes */
   .themes-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -356,7 +350,6 @@
     background: var(--bg);
   }
 
-  /* Main area: dropzone or video */
   .main-area {
     flex: 1;
     overflow: hidden;
@@ -366,7 +359,6 @@
     justify-content: center;
   }
 
-  /* Dropzone */
   #dropzone {
     position: absolute;
     inset: 0;
@@ -404,7 +396,6 @@
     letter-spacing: 0.06em;
   }
 
-  /* Video player */
   #video-player {
     position: absolute;
     inset: 20px;
@@ -428,7 +419,6 @@
     gap: 16px;
   }
 
-  /* State: idle (no file) */
   .bar-idle {
     font-size: 10px;
     letter-spacing: 0.12em;
@@ -436,7 +426,6 @@
     color: var(--border-hv);
   }
 
-  /* State: file ready */
   .bar-file {
     display: none;
     align-items: center;
@@ -477,7 +466,6 @@
   }
   .btn-remove:hover { color: var(--text); }
 
-  /* Convert button */
   #convert-btn {
     flex-shrink: 0;
     padding: 10px 24px;
@@ -497,11 +485,8 @@
     background: var(--text);
     color: var(--white);
   }
-  #convert-btn:disabled {
-    display: none;
-  }
+  #convert-btn:disabled { display: none; }
 
-  /* State: converting — progress bar inside action bar */
   .bar-progress {
     display: none;
     align-items: center;
@@ -541,7 +526,6 @@
     flex-shrink: 0;
   }
 
-  /* State: done */
   .bar-done {
     display: none;
     align-items: center;
@@ -584,7 +568,6 @@
   }
   .btn-new:hover { color: var(--text); }
 
-  /* Error inline */
   .bar-error {
     display: none;
     font-size: 11px;
@@ -593,7 +576,6 @@
     letter-spacing: 0.02em;
   }
 
-  /* Color preview in left panel */
   #color-preview {
     border: 1px solid var(--border);
     padding: 5px 8px;
@@ -611,7 +593,7 @@
 <!-- HEADER -->
 <header>
   <span class="brand">[ ASCII VIDEO ]</span>
-  <span class="header-meta">Convertisseur</span>
+  <span class="header-meta">Converter</span>
 </header>
 
 <div class="workspace">
@@ -621,16 +603,16 @@
     <div class="panel-left-scroll">
 
       <div class="group">
-        <p class="group-label">Caractères</p>
+        <p class="group-label">Characters</p>
         <div class="presets-wrap" id="preset-chips"></div>
-        <textarea id="charset-input" rows="2" placeholder="Jeu personnalisé..."></textarea>
+        <textarea id="charset-input" rows="2" placeholder="Custom character set..."></textarea>
         <p class="charset-meta" id="charset-meta"></p>
       </div>
 
       <div class="group">
-        <p class="group-label">Couleurs</p>
+        <p class="group-label">Colors</p>
         <div class="inline-row">
-          <span class="inline-label">Texte</span>
+          <span class="inline-label">Text</span>
           <div class="inline-control">
             <input type="color" id="fg-picker" value="#111010">
             <input type="text"  id="fg-hex"    value="#111010" maxlength="7">
@@ -638,7 +620,7 @@
           </div>
         </div>
         <div class="inline-row">
-          <span class="inline-label">Fond</span>
+          <span class="inline-label">Background</span>
           <div class="inline-control">
             <input type="color" id="bg-picker" value="#f9f8f7">
             <input type="text"  id="bg-hex"    value="#f9f8f7" maxlength="7">
@@ -647,7 +629,7 @@
       </div>
 
       <div class="group">
-        <p class="group-label">Taille</p>
+        <p class="group-label">Size</p>
         <div class="inline-row">
           <span class="inline-label">Px</span>
           <div class="inline-control range-row" style="flex:1">
@@ -656,7 +638,7 @@
           </div>
         </div>
         <div class="inline-row" style="border-bottom:none;">
-          <span class="inline-label">Densité</span>
+          <span class="inline-label">Density</span>
           <span class="charset-meta" id="density-hint" style="margin:0">—</span>
         </div>
       </div>
@@ -667,7 +649,7 @@
           <label class="toggle-row" for="colored-toggle">
             <input type="checkbox" id="colored-toggle">
             <div class="toggle-track"></div>
-            <span class="toggle-label">Couleurs vidéo</span>
+            <span class="toggle-label">Original colors</span>
           </label>
         </div>
         <div class="inline-row" style="border-bottom:none;">
@@ -675,13 +657,13 @@
           <select id="invert-select">
             <option value="auto">Auto</option>
             <option value="false">Normal</option>
-            <option value="true">Inversé</option>
+            <option value="true">Inverted</option>
           </select>
         </div>
       </div>
 
       <div class="group" style="margin-bottom:0">
-        <p class="group-label">Thèmes</p>
+        <p class="group-label">Themes</p>
         <div class="themes-grid" id="theme-chips"></div>
       </div>
 
@@ -692,63 +674,52 @@
   <div class="panel-right">
 
     <div class="main-area">
-      <!-- Dropzone -->
       <div id="dropzone">
         <input type="file" id="file-input" accept="video/*">
-        <p class="drop-main">— Déposer une vidéo —</p>
-        <p class="drop-sub">MP4, AVI, MOV · jusqu'à 4 Go</p>
+        <p class="drop-main">— Drop a video file —</p>
+        <p class="drop-sub">MP4, AVI, MOV · up to 4 GB</p>
       </div>
-
-      <!-- Video preview -->
       <video id="video-player" controls playsinline></video>
     </div>
 
     <!-- ACTION BAR -->
     <div class="action-bar">
+      <span class="bar-idle" id="bar-idle">Select a video to get started</span>
 
-      <!-- idle -->
-      <span class="bar-idle" id="bar-idle">Sélectionner une vidéo pour commencer</span>
-
-      <!-- file ready -->
       <div class="bar-file" id="bar-file">
         <span class="bar-filename" id="bar-filename"></span>
         <span class="bar-filesize" id="bar-filesize"></span>
-        <button class="btn-remove" id="remove-file">Retirer</button>
+        <button class="btn-remove" id="remove-file">Remove</button>
       </div>
 
-      <!-- convert button (shown when file ready, hidden otherwise) -->
-      <button id="convert-btn" disabled>Convertir</button>
+      <button id="convert-btn" disabled>Convert</button>
 
-      <!-- progress -->
       <div class="bar-progress" id="bar-progress">
-        <span class="progress-label">Conversion</span>
+        <span class="progress-label">Converting</span>
         <div class="progress-track">
           <div class="progress-fill" id="progress-fill"></div>
         </div>
         <span class="progress-pct" id="progress-pct">0%</span>
       </div>
 
-      <!-- done -->
       <div class="bar-done" id="bar-done">
-        <a id="download-btn" class="btn-download" href="#">↓ Télécharger</a>
-        <button class="btn-new" id="new-btn">Nouvelle conversion</button>
+        <a id="download-btn" class="btn-download" href="#">↓ Download</a>
+        <button class="btn-new" id="new-btn">New conversion</button>
       </div>
 
-      <!-- error -->
       <span class="bar-error" id="bar-error"></span>
-
     </div>
   </div>
 </div>
 
 <script>
 const THEMES = [
-  { name:"Matrix",   fg:"#00ff41", bg:"#000000", charset:" .:-=+*#@%", colored:false },
-  { name:"Blanc",    fg:"#111010", bg:"#f9f8f7", charset:" .:-=+*#@%", colored:false },
-  { name:"Encre",    fg:"#111010", bg:"#ffffff", charset:" `.-':_,^=;><+!rc*/z?sLTv)J7(|Fi{C}fI31tlu[neoZ5Yxjya]2ESwqkP6h9d4VpOGbUAKXHm8RD#$Bg0MNWQ%&@", colored:false },
-  { name:"Ambre",    fg:"#d4810a", bg:"#0d0800", charset:" .:-=+*#@%", colored:false },
-  { name:"Cyan",     fg:"#00c8ff", bg:"#00080f", charset:" .:-=+*#@%", colored:false },
-  { name:"Colors",   fg:"#ffffff", bg:"#000000", charset:" .:-=+*#@%", colored:true  },
+  { name:"Matrix",  fg:"#00ff41", bg:"#000000", charset:" .:-=+*#@%", colored:false },
+  { name:"Light",   fg:"#111010", bg:"#f9f8f7", charset:" .:-=+*#@%", colored:false },
+  { name:"Ink",     fg:"#111010", bg:"#ffffff", charset:" `.-':_,^=;><+!rc*/z?sLTv)J7(|Fi{C}fI31tlu[neoZ5Yxjya]2ESwqkP6h9d4VpOGbUAKXHm8RD#$Bg0MNWQ%&@", colored:false },
+  { name:"Amber",   fg:"#d4810a", bg:"#0d0800", charset:" .:-=+*#@%", colored:false },
+  { name:"Cyan",    fg:"#00c8ff", bg:"#00080f", charset:" .:-=+*#@%", colored:false },
+  { name:"Colors",  fg:"#ffffff", bg:"#000000", charset:" .:-=+*#@%", colored:true  },
 ];
 
 let presets = {};
@@ -758,32 +729,32 @@ let sseSource = null;
 
 const $ = id => document.getElementById(id);
 
-const dropzone     = $("dropzone");
-const fileInput    = $("file-input");
-const barIdle      = $("bar-idle");
-const barFile      = $("bar-file");
-const barFilename  = $("bar-filename");
-const barFilesize  = $("bar-filesize");
-const barProgress  = $("bar-progress");
-const barDone      = $("bar-done");
-const barError     = $("bar-error");
-const convertBtn   = $("convert-btn");
-const progressFill = $("progress-fill");
-const progressPct  = $("progress-pct");
-const videoPlayer  = $("video-player");
-const downloadBtn  = $("download-btn");
-const charsetInput = $("charset-input");
-const charsetMeta  = $("charset-meta");
-const densityHint  = $("density-hint");
-const fgPicker     = $("fg-picker");
-const fgHex        = $("fg-hex");
-const bgPicker     = $("bg-picker");
-const bgHex        = $("bg-hex");
-const fontSizeInput= $("font-size");
-const fontSizeVal  = $("font-size-val");
-const colorPreview = $("color-preview");
-const coloredToggle= $("colored-toggle");
-const invertSelect = $("invert-select");
+const dropzone      = $("dropzone");
+const fileInput     = $("file-input");
+const barIdle       = $("bar-idle");
+const barFile       = $("bar-file");
+const barFilename   = $("bar-filename");
+const barFilesize   = $("bar-filesize");
+const barProgress   = $("bar-progress");
+const barDone       = $("bar-done");
+const barError      = $("bar-error");
+const convertBtn    = $("convert-btn");
+const progressFill  = $("progress-fill");
+const progressPct   = $("progress-pct");
+const videoPlayer   = $("video-player");
+const downloadBtn   = $("download-btn");
+const charsetInput  = $("charset-input");
+const charsetMeta   = $("charset-meta");
+const densityHint   = $("density-hint");
+const fgPicker      = $("fg-picker");
+const fgHex         = $("fg-hex");
+const bgPicker      = $("bg-picker");
+const bgHex         = $("bg-hex");
+const fontSizeInput = $("font-size");
+const fontSizeVal   = $("font-size-val");
+const colorPreview  = $("color-preview");
+const coloredToggle = $("colored-toggle");
+const invertSelect  = $("invert-select");
 
 // ── States ────────────────────────────────────────────────────────────
 
@@ -806,7 +777,7 @@ async function init() {
   try { presets = await (await fetch("/presets")).json(); } catch(e) {}
   buildPresets();
   buildThemes();
-  applyTheme(THEMES[1]); // Blanc default
+  applyTheme(THEMES[1]);
   setState("idle");
 }
 
@@ -892,7 +863,7 @@ function fmtSize(b) {
 
 function updateCharsetMeta() {
   const cs = charsetInput.value;
-  charsetMeta.textContent = cs ? cs.length + " chars · " + [...new Set(cs)].length + " uniques" : "";
+  charsetMeta.textContent = cs ? cs.length + " chars · " + [...new Set(cs)].length + " unique" : "";
 }
 
 function updateColorPreview() {
@@ -903,7 +874,7 @@ function updateColorPreview() {
   const fs = parseInt(fontSizeInput.value);
   const cw = Math.max(1, Math.round(fs * 0.6));
   const ch = Math.max(1, Math.round(fs * 1.2));
-  densityHint.textContent = Math.round(1920/cw) + "×" + Math.round(1080/ch);
+  densityHint.textContent = Math.round(1920/cw) + "x" + Math.round(1080/ch);
 }
 
 charsetInput.addEventListener("input", updateCharsetMeta);
@@ -939,11 +910,11 @@ async function startConversion() {
 
   let resp;
   try { resp = await fetch("/convert", { method:"POST", body:form }); }
-  catch(e) { showError("Erreur réseau : " + e.message); return; }
+  catch(e) { showError("Network error: " + e.message); return; }
 
   if (!resp.ok) {
     const err = await resp.json().catch(() => ({}));
-    showError(err.error || "Erreur serveur.");
+    showError(err.error || "Server error.");
     return;
   }
 
@@ -962,10 +933,10 @@ async function startConversion() {
       onDone(job_id);
     } else if (d.status === "error") {
       sseSource.close();
-      showError(d.error || "Erreur inconnue.");
+      showError(d.error || "Unknown error.");
     }
   };
-  sseSource.onerror = () => { sseSource.close(); showError("Connexion perdue."); };
+  sseSource.onerror = () => { sseSource.close(); showError("Connection lost."); };
 }
 
 function onDone(job_id) {
@@ -978,7 +949,6 @@ function onDone(job_id) {
 function showError(msg) {
   barError.textContent = msg;
   setState("error");
-  // re-allow retry
   setTimeout(() => setState(currentFile ? "ready" : "idle"), 4000);
 }
 

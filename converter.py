@@ -167,7 +167,7 @@ class AsciiVideoConverter:
     ) -> str:
         cap = cv2.VideoCapture(input_path)
         if not cap.isOpened():
-            raise RuntimeError(f"Impossible d'ouvrir la vidéo : {input_path}")
+            raise RuntimeError(f"Cannot open video file: {input_path}")
 
         total = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
         fps = cap.get(cv2.CAP_PROP_FPS) or 24.0
@@ -188,7 +188,7 @@ class AsciiVideoConverter:
             tmp_path = output_path.replace(".mp4", "_raw.mp4")
             writer = cv2.VideoWriter(tmp_path, fourcc, fps, (out_w, out_h))
         if not writer.isOpened():
-            raise RuntimeError("Aucun codec vidéo compatible trouvé.")
+            raise RuntimeError("No compatible video codec found.")
 
         frame_n = 0
         while True:

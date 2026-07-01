@@ -38,7 +38,7 @@ def presets():
 @app.route("/convert", methods=["POST"])
 def convert():
     if "video" not in request.files:
-        return jsonify({"error": "Aucun fichier vidéo reçu."}), 400
+        return jsonify({"error": "No video file received."}), 400
 
     video_file = request.files["video"]
     charset  = request.form.get("charset", " .:-=+*#@%")
@@ -123,13 +123,13 @@ def download(job_id: str):
         job = jobs.get(job_id)
 
     if not job:
-        return jsonify({"error": "Job introuvable."}), 404
+        return jsonify({"error": "Job not found."}), 404
     if job["status"] != "done":
-        return jsonify({"error": "Conversion non terminée."}), 400
+        return jsonify({"error": "Conversion not complete."}), 400
 
     path = job["output_path"]
     if not os.path.exists(path):
-        return jsonify({"error": "Fichier de sortie introuvable."}), 404
+        return jsonify({"error": "Output file not found."}), 404
 
     # Support Range requests so the HTML5 <video> player can seek
     as_attachment = request.args.get("dl") == "1"
